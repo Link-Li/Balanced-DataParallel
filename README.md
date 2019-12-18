@@ -1,0 +1,2 @@
+# Balanced-DataParallel
+这里是改进了pytorch的DataParallel, 用来平衡第一个GPU的显存使用量
