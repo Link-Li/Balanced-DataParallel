@@ -36,8 +36,10 @@ my_net = BalancedDataParallel(gpu0_bsz // acc_grad, my_net, dim=0).cuda()
 
 ```
 
-# 两个版本的data_parallel
+### 各个版本的data_parallel
 
-- data_parallel.py: 原作者的代码, 但是使用的时候发现, 如果batch size设置的不好的话, 会导致最后一个批次的数据分配的不足以所有的GPU分配, 然后报错.
+- data_parallel.py: 原作者的代码, 但是使用的时候发现, 如果batch size设置的小于GPU的数量, 会导致最后一个批次的数据分配的不足以所有的GPU分配, 然后报错.
 
 - data_parallel_my.py: 我稍微改了一点, 然后稍微测试了一下, 应该是解决了上面的问题.
+
+- data_parallel_my_v2.py：上面第一个版本的修改，导致无法设置gpu0_bsz=0，这个版本应该是修复这个问题了
